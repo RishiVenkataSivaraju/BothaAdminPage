@@ -84,7 +84,7 @@ const VerifyPage = () => {
         <div className="otp-verification-container" style={{ textAlign: 'center' }}>
           <h1 style={{ margin: '15px 0' }}>OTP Verification</h1>
           <div className="form-group" style={{ margin: '15px' }}>
-            <button onClick={handleSendOtp} disabled={isCodeSent} style={{ padding: '10px', backgroundColor: 'blue', color: '#fff', border: 'none' }}>
+            <button onClick={handleSendOtp} disabled={isCodeSent} style={styles.button}>
               {isCodeSent ? 'Code Sent' : 'Send OTP'}
             </button>
           </div>
@@ -96,16 +96,16 @@ const VerifyPage = () => {
                 id="otp"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                style={{ margin: '15px', padding: '5px' }}
+                style={styles.input}
               />
               <div>
-                <button onClick={handleVerifyOtp} style={{ padding: '10px', backgroundColor: 'blue', color: '#fff', border: 'none' }}>Verify OTP</button>
+                <button onClick={handleVerifyOtp} style={styles.button}>Verify OTP</button>
               </div>
 
             </div>
           )}
           {error && <p className="error-message" style={{ color: 'red', margin: '15px' }}>{error}</p>}
-          <div className="captcha-container" style={{ margin: '15px', paddingLeft: "36%" }}>
+          <div className="captcha-container" style={{ margin: '15px', paddingLeft: "0%" }}>
             <div id="recaptcha-container"></div>
           </div>
           {/* Verification Success Modal */}
@@ -150,20 +150,69 @@ const VerifyPage = () => {
   );
 };
 
+// const styles = {
+//   container: {
+//     textAlign: 'center',
+//     padding: '20px'
+//   },
+//   inputContainer: {
+//     marginBottom: '10px'
+//   },
+//   label: {
+//     marginRight: '10px'
+//   },
+//   input: {
+//     padding: '5px',
+//     borderRadius: '5px'
+//   },
+//   button: {
+//     padding: '10px',
+//     borderRadius: '5px',
+//     backgroundColor: '#007bff',
+//     color: '#fff',
+//     cursor: 'pointer',
+//     border: 'none',
+//     marginTop: '10px'
+//   },
+//   error: {
+//     color: 'red'
+//   },
+//   blankPage: {
+//     marginTop: '20px'
+//   }
+// };
 const styles = {
   container: {
-    textAlign: 'center',
-    padding: '20px'
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '20px',
+    transform: 'translateY(15%)',
+    // borderRadius: '8px',
+    // border: '2px solid black',
+    // borderStyle: 'solid', // Add border style here
+    maxWidth: '400px',
+    margin: 'auto'
+  },
+  title: {
+    color: '#333'
   },
   inputContainer: {
-    marginBottom: '10px'
+    marginBottom: '15px',
+    textAlign: 'left'
   },
   label: {
-    marginRight: '10px'
+    marginRight: '10px',
+    color: '#555',
+    fontWeight: 'bold'
   },
   input: {
-    padding: '5px',
-    borderRadius: '5px'
+    padding: '8px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    width: '100%',
+    boxSizing: 'border-box'
   },
   button: {
     padding: '10px',
@@ -172,12 +221,10 @@ const styles = {
     color: '#fff',
     cursor: 'pointer',
     border: 'none',
+    width: '40%',
     marginTop: '10px'
   },
-  error: {
-    color: 'red'
-  },
-  blankPage: {
+  userData: {
     marginTop: '20px'
   }
 };
