@@ -39,11 +39,11 @@ const VerifyPage = () => {
       password: password
     };
     console.log(adminData)
-    const response = await axios.get(`http://localhost:8080/api/admin/verify/${adminData.username}`)
+    const response = await axios.post(`http://localhost:8080/api/login`,adminData)
     console.log(response.data)
-    if (response.data === "") {
+    if (response.data === "User not found") {
       setVerificationStatus('Incorrect Username or Password Given');
-    } else if (adminData.password === response.data.password) {
+    } else if (response.data === "Login successful") {
       setPhoneNumber(response.data.mobile)
       setVerificationStatus('Verified');
       setUsername('');
