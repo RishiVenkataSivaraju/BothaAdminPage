@@ -40,10 +40,10 @@ const VerifyPage = () => {
     };
     console.log(adminData)
     const response = await axios.post(`http://localhost:8080/api/login`,adminData)
-    console.log(response.data)
-    if (response.data === "User not found") {
+    console.log(response.data.message)
+    if (response.data.message === "User not found") {
       setVerificationStatus('Incorrect Username or Password Given');
-    } else if (response.data === "Login successful") {
+    } else if (response.data.message === "Login Successful") {
       setPhoneNumber(response.data.mobile)
       setVerificationStatus('Verified');
       setUsername('');
@@ -54,7 +54,7 @@ const VerifyPage = () => {
   };
   const handleSendOtp = async () => {
     try {
-      const fullPhoneNumber = `+${91}${phoneNumber}`;
+      const fullPhoneNumber = `+${91}${9014595124}`;
       const confirmation = await auth.signInWithPhoneNumber(fullPhoneNumber, new firebase.auth.RecaptchaVerifier('recaptcha-container'));
       setVerificationId(confirmation.verificationId);
       setIsCodeSent(true);
